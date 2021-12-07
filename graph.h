@@ -1,12 +1,12 @@
 #ifndef STUDENT_GRAPH
 #define STUDENT_GRAPH
 
-#include "binary_heap.h"
-#include <fstream>
-
 // This file is for your graph implementation.
 // Add everything you need in between the "ifndef and "endif" statements.
 // Do not put anything outside those statements
+
+#include "binary_heap.h"
+#include <fstream>
 #include <sstream>
 struct Graph
 {
@@ -41,12 +41,18 @@ struct Graph
                     ss >> word;
                     double weight = stod(word);
 
-                    // std::cout << node << " " << other_node << " " << weight << std::endl;
                     adjacency_graph[node][other_node] = weight;
                 }
             }
             input.close();
         };
+    };
+
+    std::string truncate(double value, int precision)
+    {
+        std::string sified = std::to_string(value);
+        int dec_location = sified.find('.');
+        return sified.substr(0, dec_location + precision + 1 );        
     };
 
     void testAdjacency(std::string fname)
@@ -66,8 +72,8 @@ struct Graph
                 
                 ss >> word;
                 int right = stoi(word);
-                
-                std::cout << left << " " << right << ": " << ((adjacency_graph[left][right] > 0) ? std::to_string(adjacency_graph[left][right]):"not_connected" ) << std::endl;
+                // TODO: Fix truncation of the double
+                std::cout << left << " " << right << ": "<< std::setprecision(2) << ((adjacency_graph[left][right] > 0) ? truncate(adjacency_graph[left][right], 1):"not_connected" ) << std::endl;
             }
             input.close();
         };

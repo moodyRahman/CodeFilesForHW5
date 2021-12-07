@@ -73,7 +73,7 @@ struct Graph
                 ss >> word;
                 int right = stoi(word);
                 // TODO: Fix truncation of the double
-                std::cout << left << " " << right << ": "<< std::setprecision(2) << ((adjacency_graph[left][right] > 0) ? truncate(adjacency_graph[left][right], 1):"not_connected" ) << std::endl;
+                std::cout << left << " " << right << ": " << ((adjacency_graph[left][right] > 0) ? ("connected " + truncate(adjacency_graph[left][right], 1)):"not_connected" ) << std::endl;
             }
             input.close();
         };

@@ -67,7 +67,7 @@ struct Graph
                 ss >> word;
                 int right = stoi(word);
                 
-                std::cout << left << " " << right << " " << ((adjacency_graph[left][right] > 0) ? "true":"false") << std::endl;
+                std::cout << left << " " << right << ": " << ((adjacency_graph[left][right] > 0) ? std::to_string(adjacency_graph[left][right]):"not_connected" ) << std::endl;
             }
             input.close();
         };
